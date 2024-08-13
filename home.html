@@ -1,35 +1,106 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .login {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"] {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    select {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
 </head>
-
 <body>
- <div class="login">
-	<h1>Diabetes Prediction</h1>
+  <div class="login">
+    <h1>Diabetes Prediction</h1>
     <form action="{{ url_for('predict_datapoint')}}" method="post">
-      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" /><br>
-    	<input type="text" name="Glucose" placeholder="Glucose" required="required" /><br>
-        <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" /><br>
-        <input type="text" name="SkinThickness" placeholder="SkinThickness" required="required" /><br>
-        <input type="text" name="Insulin" placeholder="Insulin" required="required" /><br>
-        <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
-        <input type="text" name="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" /><br>
-
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
+      <input type="text" name="Glucose" placeholder="Glucose" required="required" />
+      <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" />
+      <input type="text" name="SkinThickness" placeholder="SkinThickness" required="required" />
+      <input type="text" name="Insulin" placeholder="Insulin" required="required" />
+      <input type="text" name="BMI" placeholder="BMI" required="required" />
+      <select name="DiabetesPedigreeFunction" required="required">
+        <option value="" disabled selected>Select Diabetes Pedigree Function</option>
+        <option value="0.0">0.0</option>
+        <option value="0.1">0.1</option>
+        <option value="0.2">0.2</option>
+        <option value="0.3">0.3</option>
+        <option value="0.4">0.4</option>
+        <option value="0.5">0.5</option>
+        <option value="0.6">0.6</option>
+        <option value="0.7">0.7</option>
+        <option value="0.8">0.8</option>
+        <option value="0.9">0.9</option>
+        <option value="1.0">1.0</option>
+      </select>
+      <button type="submit">Predict</button>
     </form>
-<body>
-
-   <br>
-   <br>
-
-
- </div>
- {{result}}
-
+    <div class="result">
+      {{ result }}
+    </div>
+  </div>
 </body>
 </html>
